@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="jquery-1.6.4.js"></script>
+    <script type="text/javascript" src="jquery.signalR-2.2.0.js"></script>
+    <script src="http://localhost:3000/signalr/hubs"></script>
+</head>
+<body>
+    
+    <h1>Messages</h1>
+    <div id="target">
+        <ul/>
+    </div>
+
+    <script type="text/javascript">
+
+        var hub = $.connection.signalHub;
+
+        $.connection.hub.start(function () {
+            
+        });
+
+        hub.client.send = function (text) {
+            $("#target").find('ul').append($("<li></li>").html(text));
+        };
+
+    </script>
+
+</body>
+
+
+</html>
